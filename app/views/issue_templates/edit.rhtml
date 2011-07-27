@@ -1,0 +1,17 @@
+<h2><%=h "Issue Template ##{@issue.id}" %> </h2>
+
+<% labelled_tabular_form_for :issue, @issue,
+                             :url => {:action => 'edit', :id => @issue},
+                             :html => {:id => 'issue-form',
+                                       :class => nil,
+                                       :multipart => true} do |f| %>
+    <%= error_messages_for 'issue' %>
+    <div class="box">
+    <%= render :partial => 'form', :locals => {:f => f} %>
+    </div>
+    <%= submit_tag l(:button_submit) %>
+<% end %>
+
+<div id="preview" class="wiki"></div>
+
+<%= link_to 'Back',{:controller => 'settings', :tab => 'templates'} %>

@@ -1,0 +1,22 @@
+<div id="issue_descr_fields">
+<p><%= f.text_field :subject, :size => 80, :required => true %></p>
+<p><%= f.text_area :description, :required => true,
+                   :cols => 60,
+                   :rows => 10,
+                   :accesskey => accesskey(:edit),
+                   :class => 'wiki-edit' %></p>
+</div>
+
+<div class="splitcontentleft">
+
+<p><%= f.select :acctg_type, @accounting.collect {|a| [a.name, a.id]}, {:required => true, :selected => @default}  %></p>
+<p><%= f.select :category_id, (@categories.collect {|c| [c.name, c.id]}), :include_blank => true %>
+<%= prompt_to_remote(l(:label_issue_category_new),
+                     l(:label_issue_category_new), 'category[name]', 
+                     {:controller => 'issue_templates', :action => 'add_issue_templates_category'},
+                     :class => 'small', :tabindex => 199) %></p>
+</div>
+<div style="clear:both;"> </div>
+<%= call_hook(:view_issues_form_details_bottom, { :issue => @issue, :form => f }) %>
+
+<%= wikitoolbar_for 'issue_description' %>

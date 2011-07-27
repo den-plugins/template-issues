@@ -1,0 +1,8 @@
+<h2><%=l(:label_issue_category_new)%></h2>
+
+<% labelled_tabular_form_for :category, @category, :url => { :action => 'add_issue_category' } do |f| %>
+  <div class="box">
+    <%= render :partial => 'issue_templates_category/form', :locals => { :f => f } %>
+  </div>
+<%= submit_tag l(:button_create) %>
+<% end %>

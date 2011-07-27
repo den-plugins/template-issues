@@ -1,0 +1,6 @@
+<div id='modal_container'>
+  <% labelled_tabular_remote_form_for :category, @category ,:url => {:action => "edit"}  do |f| %>
+    <%= render :partial => 'form', :locals => {:f => f}%>
+    <center> <%= submit_tag l(:button_save) %> </center>
+  <% end %>
+</div>
